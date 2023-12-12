@@ -39,7 +39,7 @@ class generate_report:
         }
         print("Creating report...")
         dataframe = pd.DataFrame(data, index=None)
-        dataframe.to_csv(r"E:\Directory\dataset\multipage_report.csv")
+        dataframe.to_csv(r"E:\Github\Amazon-Price-tracker\sample_dataset1.csv", index=None)
         print("Done...")
 
     def get_now(self):
@@ -74,7 +74,7 @@ class amazon_api:
         time.sleep(2)
         result_list = self.driver.find_elements(By.CLASS_NAME, 's-result-list')
         links = []
-        for i in range(3):
+        for i in range(1):
             self.driver.get(f'{self.driver.current_url}{self.price_filter}&page={i+1}')
             time.sleep(3)
             result_list = self.driver.find_elements(By.CLASS_NAME, 's-result-list')
@@ -179,7 +179,7 @@ class amazon_api:
     
     def get_stars(self):
         try:
-            return self.driver.find_element(By.XPATH, "//a[@href='javascript:void(0)']/i/span").text
+            return self.driver.find_element(By.XPATH, "//div[@id='averageCustomerReviews_feature_div']/div/span/span/span/a/span").text
         except Exception as e:
             print(e)
             print(f"can't find stars {self.driver.current_url}")
