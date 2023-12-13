@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+.box{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 8, 51, 0.3),rgba(0, 8, 51, 0.8)), url(amazon-webstore-5-steps.png);
+    background-position: center;
+    background-size: cover;
+    
+}
+.header{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    width: 250px;
+    height: 130px;
+    cursor: pointer;
+}
+.header ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+.header ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+.header ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #40E0D0;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.header ul li:hover::after{
+    width: 100%;
+}
+.name{
+    width: 100%;
+    position: absolute;
+    text-align: left;
+    padding-left: 130px;
+    color: black;
+    cursor: pointer;
+}
+.searchbar{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    margin-left: 400px;
+    max-width: 700px;
+    max-height: 80px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
+.searchbar input{
+    background-color: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 25px;
+    color: #000;
+}
+.searchbar button img{
+    width: 40px;
+}
+.searchbar button{
+    background: transparent;
+    border: 2px solid #ffff;
+    color: #fff;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    width: 60px; 
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+}
+.searchbar button span{
+    background: #fff;
+    height: 100%;
+    width: 0%;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    z-index: -1;
+}
+.searchbar button:hover span{
+    width: 100%;
+}
+.searchbar button :hover{
+    border: none;
+}
