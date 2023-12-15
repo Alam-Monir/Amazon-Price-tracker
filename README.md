@@ -18,7 +18,6 @@ This dataframe is saved on the computer locally as a CSV file.
 
 # Still in progress
 
-- A webpage for a GUI experience of the users
 - Linking the webpage to the python code
 - Uploading the code to the cloud
 - Making a feature to autoexecute the code everyday on the cloud
