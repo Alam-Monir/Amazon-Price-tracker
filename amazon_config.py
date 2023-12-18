@@ -4,13 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
 
-#options = webdriver.ChromeOptions()
-#options.add_argument("--incognito")
-#options.add_argument('--ignore-certificate-errors')
-#options.add_argument('--ignore-ssl-errors')
-#driver = webdriver.Chrome(options=options)
-
-
 base_url = "https://www.amazon.in/"
 directory = 'Reports'
 currency = 'Rs'
@@ -23,7 +16,7 @@ filters = {
 }
 
 def get_chrome_web_driver(options):
-    return webdriver.Chrome(options=options)
+    return webdriver.Chrome(options=options,service=ChromeService(ChromeDriverManager().install()))
 
 def get_web_driver_options():
     return webdriver.ChromeOptions()
@@ -43,6 +36,8 @@ def set_browser_as_incognito(options):
 def set_automation_as_head_less(options):
     options.add_argument('--headless')
 
-#def simple_cmds(options):
-#    options.add_argument('--ignore-certificate-errors')
-#    options.add_argument('--incognito')
+#options = webdriver.ChromeOptions()
+#options.add_argument("--incognito")
+#options.add_argument('--ignore-certificate-errors')
+#options.add_argument('--ignore-ssl-errors')
+#driver = webdriver.Chrome(options=options)

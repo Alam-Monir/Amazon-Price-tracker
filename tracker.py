@@ -3,22 +3,17 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
-import json
 from datetime import datetime
 from amazon_config import(
-    directory,
     Name,
     currency,
-    MIN_price,
-    MAX_price,
     filters,
     base_url,
     get_web_driver_options,
     set_ignore_certificate_error,
     set_browser_as_incognito,
     set_ignore_ssl_errors,
-    get_chrome_web_driver,
-    set_automation_as_head_less
+    get_chrome_web_driver
 )
 
 class generate_report:
@@ -28,19 +23,19 @@ class generate_report:
         self.filters = filters
         self.base_link = base_link
         self.currency = currency
-        report = {
-            'title': self.file_name,
-            'date': self.get_now(),
-            #'best_item': self.get_best_item(),
-            'currency': self.currency,
-            'filters': self.filters,
-            'base_link': self.base_link,
-            'products': self.data
-        }
+        # report = {
+        #     'title': self.file_name,
+        #     'date': self.get_now(),
+        #     #'best_item': self.get_best_item(),
+        #     'currency': self.currency,
+        #     'filters': self.filters,
+        #     'base_link': self.base_link,
+        #     'products': self.data
+        # }
         print("Creating report...")
         dataframe = pd.DataFrame(data, index=None)
-        dataframe.to_csv(r"E:\Github\Amazon-Price-tracker\sample_dataset1.csv", index=None)
-        print("Done...")
+        dataframe.to_csv(r"E:\Github\Amazon-Price-tracker\sample_dataset0.csv")
+        print("Done...🚀")
 
     def get_now(self):
         now = datetime.now()
@@ -130,7 +125,7 @@ class amazon_api:
                 'url': product_short_url,
                 'title': title,
                 'seller': seller,
-                'price': price,
+                'price in RS': price,
                 'stars': stars,
                 'ratings':ratings
             }
@@ -215,13 +210,3 @@ if __name__ == '__main__':
         amazon = amazon_api(Name, filters, base_url, currency)
         data = amazon.run()
         generate_report(Name, filters, base_url, currency, data)
-        # li = amazon.get_product_links()
-        # res = amazon.get_asins(li)
-        # print(res[1])
-        # # pr=[]
-        # # for asin in res:
-        # #     pr.append(amazon.short_url(asin))
-        # # print(pr, sep="\n")
-        # # print(len(pr))
-        # # a ='FB0C9JFWBH7'
-        # amazon.get_single_product_info(res[1])
