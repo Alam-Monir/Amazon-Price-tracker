@@ -13,7 +13,8 @@ from amazon_config import(
     set_ignore_certificate_error,
     set_browser_as_incognito,
     set_ignore_ssl_errors,
-    get_chrome_web_driver
+    get_chrome_web_driver,
+    set_automation_as_head_less
 )
 
 class generate_report:
@@ -141,7 +142,7 @@ class amazon_api:
 
     def get_seller(self):
         try:
-            return self.driver.find_element(By.XPATH,"//div[@class ='a-section a-spacing-mini']/div/a/span[1]").text
+            return self.driver.find_element(By.XPATH,"//div[@class ='a-section a-spacing-mini']/div/a[1]/span[1]").text
         except Exception as e:
             print(e)
             print(f"can't find seller {self.driver.current_url}")
@@ -149,7 +150,7 @@ class amazon_api:
     def get_price(self):
         price=None
         try:
-            price=self.driver.find_element(By.XPATH,"//div[@class ='a-section a-spacing-none aok-align-center aok-relative']/span[3]/span[2]/span[2]").text
+            price=self.driver.find_element(By.XPATH,"//div[@class='a-section a-spacing-none aok-align-center']/span[2]/span[2]/span[2]").text
             price = self.convert_price(price)
             return price
         except NoSuchElementException:
