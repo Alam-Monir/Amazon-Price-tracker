@@ -49,7 +49,7 @@ class amazon_api:
         self.search=search
         self.base_url=base_url
         options = get_web_driver_options()
-        #set_automation_as_head_less(options)
+        set_automation_as_head_less(options)
         set_ignore_certificate_error(options)
         set_browser_as_incognito(options)
         set_ignore_ssl_errors(options)
@@ -142,7 +142,7 @@ class amazon_api:
 
     def get_seller(self):
         try:
-            return self.driver.find_element(By.XPATH,"//div[@class ='a-section a-spacing-mini']/div/a[1]/span[1]").text
+            return self.driver.find_element(By.XPATH,"//div[@class ='tabular-buybox-container']/div[4]/div/span/a").text
         except Exception as e:
             print(e)
             print(f"can't find seller {self.driver.current_url}")
@@ -150,7 +150,7 @@ class amazon_api:
     def get_price(self):
         price=None
         try:
-            price=self.driver.find_element(By.XPATH,"//div[@class='a-section a-spacing-none aok-align-center']/span[2]/span[2]/span[2]").text
+            price=self.driver.find_element(By.XPATH,"//div[@class='a-section a-spacing-none aok-align-center aok-relative']/span[3]/span[2]/span[2]").text
             price = self.convert_price(price)
             return price
         except NoSuchElementException:
