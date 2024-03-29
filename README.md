@@ -19,7 +19,6 @@ This dataframe is saved on the system locally as a CSV file.
 # Still in progress
 
 - Linking the webpage to the python code
-- Uploading the code to the cloud
 - Making a feature to autoexecute the code everyday on the cloud
 - Training an AI to keep progress of the change of price and ratings on the products.
 - Providing the best given price and time to buy a product.
